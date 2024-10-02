@@ -2,32 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer components {
+  .sidebar-icon{
+      @apply relative flex items-center justify-center h-12 w-11 mt-2 mb-2 shadow-lg bg-gray-800 text-gray-200 hover:bg-gray-600 rounded-3xl hover:rounded-xl transition-all  dark:bg-gray-300 dark:text-black;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .sidebar-tooltip {
+      @apply absolute p-5 left-10 hover:text-white;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.dark-mode {
+  background-color: #1a202c;
+  color: white;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+/* Custom CSS for hexagonal button */
+.hexagon {
+width: 100px;
+height: 57.74px; /* Adjusted height to maintain the aspect ratio of a hexagon */
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* Custom CSS hexagon bg texture  */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+#hex-grid {
+  height: 100vh;
+  background: #000;
+}
+#hex-grid .grid{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: "@@/public/grid.svg";
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: 500px;
 }
